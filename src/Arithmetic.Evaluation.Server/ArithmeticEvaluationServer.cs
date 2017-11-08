@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Data;
-using System.Diagnostics;
-using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
+using Serilog;
 
 namespace Arithmetic.Evaluation.Server
 {
     public class ArithmeticEvaluationServer
     {
+        private readonly Serilog.ILogger logger = Log.ForContext<ArithmeticEvaluationServer>();
+
         private TcpListener listener;
 
         public ArithmeticEvaluationServer(IPAddress address, int port)
@@ -21,15 +21,13 @@ namespace Arithmetic.Evaluation.Server
 
         public async Task StartAsync()
         {
-            Console.WriteLine($"Starting listening on {listener.LocalEndpoint}");
+            logger.Information($"Starting listening on {listener.LocalEndpoint}");
             listener.Start();
 
             while (true)
             {
-                Console.WriteLine("Waiting for a connection...");
-                
                 var client = await listener.AcceptTcpClientAsync();
-                Console.WriteLine($"Client connected: {client.Client.RemoteEndPoint}");
+                logger.Debug($"Client connected: {client.Client.RemoteEndPoint}");
                 await ProcessConnection(client);
 
                 client.Close();
@@ -45,12 +43,12 @@ namespace Arithmetic.Evaluation.Server
                     byte[] readBuffer = new byte[1024];
                     int byteCount = await networkStream.ReadAsync(readBuffer, 0, readBuffer.Length);
                     string request = Encoding.UTF8.GetString(readBuffer, 0, byteCount);
-                    Console.WriteLine($"Request: {request}");
+                    logger.Debug($"Request: {request}");
 
-                    string formattedEvaluation = String.Format("{0:0.##}", Evaluate(request));
-                    byte[] writeBuffer = Encoding.UTF8.GetBytes(formattedEvaluation);
+                    string evaluation = Evaluate(request);
+                    byte[] writeBuffer = Encoding.UTF8.GetBytes(evaluation);
                     await networkStream.WriteAsync(writeBuffer, 0, writeBuffer.Length);
-                    Console.WriteLine($"{request} = {formattedEvaluation}");
+                    logger.Debug($"{request} = {evaluation}");
                 }
             });
         }
@@ -64,7 +62,7 @@ namespace Arithmetic.Evaluation.Server
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                logger.Error(e.Message);
                 return Double.NaN.ToString();
             }
         }

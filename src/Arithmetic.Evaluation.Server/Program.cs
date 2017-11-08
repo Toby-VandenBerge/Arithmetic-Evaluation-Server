@@ -1,15 +1,16 @@
-﻿using System;
-using System.Net;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using System.Net;
+using Microsoft.Extensions.Configuration;
+using Arithmetic.Evaluation.Shared.Extensions;
 
 namespace Arithmetic.Evaluation.Server
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
+            IConfigurationRoot configuration = ConfigurationRootFactory.Create();
+            SerilogExtensions.InitializeSerilog(configuration);
+
             ArithmeticEvaluationServer server = new ArithmeticEvaluationServer(IPAddress.Parse("127.0.0.1"), 1337);
             server.StartAsync().Wait();
         }
