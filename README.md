@@ -4,8 +4,8 @@ TCP server to evaluate arithmetic expressions
 
 Behavior:
 - The server accepts n number of connections (made from the Arithmetic.Evaluation.Client) on the configuration port (defaults to 59667)
-- The server expects arithmetic expression requests from the clients
-- The server evaluations the requested expressions and responds with the result
+- The server expects arithmetic expression requests from the clients (e.g. 1+1)
+- The server evaluates the requested expressions and responds with the result
 - The client can lose conection to the server and will continue to attempt to reconnect every 5 seconds
 - Both the client and server can be gracefully stopped by a (Ctrl + c) or (Ctrl + break) command
 
@@ -56,9 +56,8 @@ Running
 ============
 There are two (2) applications:
 ### Server
-ServicePort defaults to 59667
-
-Configuration can be found at 
+- ServicePort defaults to 59667
+- Configuration can be found at:
 ```
 src/Arithmetic.Evaluation.Server/appsettings.json
 ```
@@ -77,13 +76,10 @@ chmod +x run-server.sh
 ```
 
 ### Client
-It is possible to have n number of clients executing concurrently.
-
-EvaluationServerIp defaults to '127.0.0.1'
-
-EvaluationServerPort defaults to 59667
-
-Configuration can be found at 
+- It is possible to have n number of clients executing concurrently.
+- EvaluationServerIp defaults to '127.0.0.1'
+- EvaluationServerPort defaults to 59667
+- Configuration can be found at:
 ```
 src/Arithmetic.Evaluation.Client/appsettings.json
 ```
