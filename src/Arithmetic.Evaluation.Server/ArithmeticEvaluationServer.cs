@@ -40,11 +40,11 @@ namespace Arithmetic.Evaluation.Server
 
             while (continueListening)
             {
-                var client = await listener.AcceptTcpClientAsync();
-                logger.Debug($"Client connected: {client.Client.RemoteEndPoint}");
-                await ProcessConnection(client);
-                //logger.Debug($"Finished processing {client.Client.RemoteEndPoint}");
-                client.Close();
+                using (var client = await listener.AcceptTcpClientAsync())
+                {
+                    logger.Debug($"Client connected: {client.Client.RemoteEndPoint}");
+                    await ProcessConnection(client);
+                }
             }
         }
 
