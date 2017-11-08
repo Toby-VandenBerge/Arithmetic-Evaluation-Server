@@ -9,7 +9,7 @@ Behavior:
 - The client can lose conection to the server and will continue to attempt to reconnect every 5 seconds
 - Both the client and server can be gracefully stopped by a (Ctrl + c) or (Ctrl + break) command
 
-# Building
+Building
 ============
 ### Get .NET Core SDK with .NET 2.0+ runtime
 
@@ -36,12 +36,23 @@ powershell build.ps1
 ```
 
 #### Linux
+This will require curl and mono to be installed
 ```
-cd arithmetic.evaluation
-build.sh
+sudo apt-get install curl
+```
+```
+sudo apt-get install mono-devel
 ```
 
-# Running
+```
+cd arithmetic.evaluation
+# Adjust the permissions
+chmod +x build.sh
+
+./build.sh
+```
+
+Running
 ============
 There are two (2) applications:
 ### Server
