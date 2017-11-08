@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Arithmetic.Evaluation.Serve
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Arithmetic.Evaluation.Client", "src\Arithmetic.Evaluation.Client\Arithmetic.Evaluation.Client.csproj", "{5782EADD-A27C-4590-8B12-796A364FCD96}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arithmetic.Evaluation.Tests", "src\Arithmetic.Evaluation.Tests\Arithmetic.Evaluation.Tests.csproj", "{9E1CB678-EB73-4117-A6CE-E63B30BA2072}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Arithmetic.Evaluation.Tests", "src\Arithmetic.Evaluation.Tests\Arithmetic.Evaluation.Tests.csproj", "{285BACB3-7D52-4039-B120-8D35EAE62324}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{5782EADD-A27C-4590-8B12-796A364FCD96}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5782EADD-A27C-4590-8B12-796A364FCD96}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5782EADD-A27C-4590-8B12-796A364FCD96}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9E1CB678-EB73-4117-A6CE-E63B30BA2072}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9E1CB678-EB73-4117-A6CE-E63B30BA2072}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9E1CB678-EB73-4117-A6CE-E63B30BA2072}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9E1CB678-EB73-4117-A6CE-E63B30BA2072}.Release|Any CPU.Build.0 = Release|Any CPU
+		{285BACB3-7D52-4039-B120-8D35EAE62324}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{285BACB3-7D52-4039-B120-8D35EAE62324}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{285BACB3-7D52-4039-B120-8D35EAE62324}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{285BACB3-7D52-4039-B120-8D35EAE62324}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -2,9 +2,9 @@
 
 var target = Argument("target", "Default");
 var configuration = "Debug";
-var solutionPath = "./Arithmetic.Evaluation.Server.sln";
+var solutionPath = "./Arithmetic.Evaluation.sln";
 var projectFilePath = "./src/Arithmetic.Evaluation.Server/Arithmetic.Evaluation.Server.csproj";
-var testsFilePath = "./tests/WebApi.Tests/WebApi.Tests.csproj";
+var testsFilePath = "./src/Arithmetic.Evaluation.Tests/Arithmetic.Evaluation.Tests.csproj";
 GitVersion versionInfo = null;
 
 Task("Default")

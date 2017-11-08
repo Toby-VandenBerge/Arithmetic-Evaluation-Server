@@ -10,7 +10,7 @@ namespace Arithmetic.Evaluation.Server
     {
         static void Main(string[] args)
         {
-            ArithmeticEvaluationServer server = new ArithmeticEvaluationServer("127.0.0.1", 1337);
+            ArithmeticEvaluationServer server = new ArithmeticEvaluationServer(IPAddress.Parse("127.0.0.1"), 1337);
             server.StartAsync().Wait();
         }
     }

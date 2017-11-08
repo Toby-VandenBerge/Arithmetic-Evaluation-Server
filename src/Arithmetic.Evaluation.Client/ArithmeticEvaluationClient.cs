@@ -25,7 +25,7 @@ namespace Arithmetic.Evaluation.Client
                 {
                     using (var client = new TcpClient("127.0.0.1", 1337))
                     {
-                        await SendRequest(client);
+                        await Send(client, ExpressionFactory.CreateRandomExpression());
                         await Task.Delay(500);
                     }
                 }
@@ -39,23 +39,23 @@ namespace Arithmetic.Evaluation.Client
             }
         }
 
-        private Task SendRequest(TcpClient client)
+        public Task<string> Send(TcpClient client, string message)
         {
-            return Task.Run(async () =>
+            return Task<string>.Run(async () =>
             {
-                string randomExpression = ExpressionFactory.Create();
-
+                string response = string.Empty;
                 using (var networkStream = client.GetStream())
                 {
-                    Console.WriteLine($"Sending: {randomExpression}");
-                    byte[] writeBuffer = Encoding.ASCII.GetBytes(randomExpression);
+                    Console.WriteLine($"Sending: {message}");
+                    byte[] writeBuffer = Encoding.ASCII.GetBytes(message);
                     await networkStream.WriteAsync(writeBuffer, 0, writeBuffer.Length);
 
                     var readBuffer = new byte[4096];
                     var byteCount = await networkStream.ReadAsync(readBuffer, 0, readBuffer.Length);
-                    var result = Encoding.UTF8.GetString(readBuffer, 0, byteCount);
-                    Console.WriteLine($"Result: {result}");
+                    response = Encoding.UTF8.GetString(readBuffer, 0, byteCount);
+                    Console.WriteLine($"Result: {response}");
                 }
+                return response;
             });
         }
     }

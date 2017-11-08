@@ -16,7 +16,7 @@ namespace Arithmetic.Evaluation.Client
             "%"
         };
 
-        public static string Create()
+        public static string CreateRandomExpression()
         {
             return $"{random.Next(0, 101)} {operators[random.Next(0, operators.Count)]} {random.Next(0, 101)}";
         }

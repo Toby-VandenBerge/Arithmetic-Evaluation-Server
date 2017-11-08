@@ -14,9 +14,9 @@ namespace Arithmetic.Evaluation.Server
     {
         private TcpListener listener;
 
-        public ArithmeticEvaluationServer(string address, int port)
+        public ArithmeticEvaluationServer(IPAddress address, int port)
         {
-            listener = new TcpListener(IPAddress.Parse(address), port);
+            listener = new TcpListener(address, port);
         }
 
         public async Task StartAsync()
@@ -55,20 +55,17 @@ namespace Arithmetic.Evaluation.Server
             });
         }
 
-        public double Evaluate(string expression)
+        public string Evaluate(string expression)
         {
             try
             {
                 DataTable table = new DataTable();
-                DataColumn evaluationColumn = new DataColumn("Evaluation", typeof(double), expression);
-                table.Columns.Add(evaluationColumn);
-                table.Rows.Add(0);
-                return (double) (table.Rows[0]["Evaluation"]);
+                return table.Compute(expression, string.Empty).ToString();
             }
-            catch (DivideByZeroException divideByZeroException)
+            catch (Exception e)
             {
-                Console.WriteLine("Attempt to divide by zero");
-                return Double.NaN;
+                Console.WriteLine(e);
+                return Double.NaN.ToString();
             }
         }
     }
