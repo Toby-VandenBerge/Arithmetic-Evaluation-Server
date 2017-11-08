@@ -13,7 +13,7 @@ Building
 ============
 ### Get .NET Core SDK with .NET 2.0+ runtime
 
-####Windows
+#### Windows
 ```
 choco install dotnet-sdk -y
 ```
@@ -28,11 +28,11 @@ git clone https://github.com/Toby-VandenBerge/Arithmetic.Evaluation.git
 ```
 
 ### Build
-Utilize [Cake](https://github.com/cake-build/cake) to execute the compilation and tests
+Utilizes [Cake](https://github.com/cake-build/cake) to execute the compilation and tests
 #### Windows
 ```
 cd arithmetic.evaluation
-powershell build.ps1
+powershell .\build.ps1
 ```
 
 #### Linux
@@ -41,7 +41,7 @@ This will require curl and mono to be installed
 sudo apt-get install curl
 ```
 ```
-sudo apt-get install mono-devel
+sudo apt-get install mono-complete
 ```
 
 ```
@@ -56,7 +56,7 @@ Running
 ============
 There are two (2) applications:
 ### Server
-Port defaults to 1337
+ServicePort defaults to 59667
 Configuration can be found at 
 ```
 src/Arithmetic.Evaluation.Server/appsettings.json
@@ -69,14 +69,17 @@ run-server.bat
 ```
 ##### Linux
 ```
-run-server.sh
+# Adjust the permissions
+chmod +x run-server.sh
+
+./run-server.sh
 ```
 
 ### Client
 It is possible to have n number of clients executing concurrently.
 
 EvaluationServerIp defaults to '127.0.0.1'
-EvaluationServerPort defaults to 1337
+EvaluationServerPort defaults to 59667
 Configuration can be found at 
 ```
 src/Arithmetic.Evaluation.Client/appsettings.json
@@ -89,5 +92,8 @@ run-client.bat
 ```
 ##### Linux
 ```
-run-client.sh
+# Adjust the permissions
+chmod +x run-client.sh
+
+./run-client.sh
 ```
