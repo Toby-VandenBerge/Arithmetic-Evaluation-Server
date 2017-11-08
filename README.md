@@ -18,7 +18,7 @@ Building
 choco install dotnet-sdk -y
 ```
 
-####Linux
+#### Linux
 
 Please see [Prerequisites for .NET Core on Linux](https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites?tabs=netcore2x) for your target distro.
 
