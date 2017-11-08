@@ -3,7 +3,7 @@ Arithmetic Evaluation
 TCP server to evaluate arithmetic expressions
 
 Behavior:
-- The server accepts n number of connections (made from the Arithmetic.Evaluation.Client) on the configuration port (defaults to 1337)
+- The server accepts n number of connections (made from the Arithmetic.Evaluation.Client) on the configuration port (defaults to 59667)
 - The server expects arithmetic expression requests from the clients
 - The server evaluations the requested expressions and responds with the result
 - The client can lose conection to the server and will continue to attempt to reconnect every 5 seconds
@@ -57,6 +57,7 @@ Running
 There are two (2) applications:
 ### Server
 ServicePort defaults to 59667
+
 Configuration can be found at 
 ```
 src/Arithmetic.Evaluation.Server/appsettings.json
@@ -65,7 +66,7 @@ src/Arithmetic.Evaluation.Server/appsettings.json
 #### Start
 ##### Windows
 ```
-run-server.bat
+.\run-server.bat
 ```
 ##### Linux
 ```
@@ -79,7 +80,9 @@ chmod +x run-server.sh
 It is possible to have n number of clients executing concurrently.
 
 EvaluationServerIp defaults to '127.0.0.1'
+
 EvaluationServerPort defaults to 59667
+
 Configuration can be found at 
 ```
 src/Arithmetic.Evaluation.Client/appsettings.json
@@ -88,7 +91,7 @@ src/Arithmetic.Evaluation.Client/appsettings.json
 #### Start
 ##### Windows
 ```
-run-client.bat
+.\run-client.bat
 ```
 ##### Linux
 ```
