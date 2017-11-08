@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Net;
-using System.Net.Sockets;
-using System.Text;
-using System.Threading;
 using Microsoft.Extensions.Configuration;
 using Arithmetic.Evaluation.Shared.Extensions;
 
@@ -13,9 +9,11 @@ namespace Arithmetic.Evaluation.Client
         public static void Main(string[] args)
         {
             IConfigurationRoot configuration = ConfigurationRootFactory.Create();
+            string evaluationServerIp = configuration.GetSection("EvaluationServerIp").Value;
+            int evaluationServerPort = Convert.ToInt32(configuration.GetSection("EvaluationServerPort").Value);
             SerilogExtensions.InitializeSerilog(configuration);
 
-            ArithmeticEvaluationClient client = new ArithmeticEvaluationClient();
+            ArithmeticEvaluationClient client = new ArithmeticEvaluationClient(evaluationServerIp, evaluationServerPort);
             client.Start().Wait();
         }
     }
