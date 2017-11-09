@@ -73,7 +73,7 @@ namespace Arithmetic.Evaluation.Client
                     var readBuffer = new byte[1024];
                     var byteCount = await networkStream.ReadAsync(readBuffer, 0, readBuffer.Length);
                     response = Encoding.UTF8.GetString(readBuffer, 0, byteCount);
-                    logger.Debug($"Result: {response}");
+                    logger.Debug($"{message} = {response}");
                 }
                 return response;
             });
